@@ -15,13 +15,13 @@ WorkBuddy ──转录文件──▶ 桥接程序 ──蓝牙──▶ AI Pass
 
 | 包 | 装在哪 | 版本 |
 | --- | --- | --- |
-| `WorkBuddy-Bridge-2.2.zip` | 你的电脑 | 2.2.1 |
+| `WorkBuddy-Bridge-2.2.zip` | 你的电脑 | 2.2.2 |
 | `workbuddy-passport-firmware-0.2.6-workbuddy-20260915.zip` | AI Passport 硬件 | 0.2.6 |
 
 > **重刷过固件的，先把电脑端升到 2.2.x**：整片刷写会覆盖设备 NVS，
 > 设备侧的配对密钥随之丢失，而 Windows 仍记着旧密钥，会出现「连上就断、语音用不了」。
 > 2.2.0 起会自己识别并清除，不用再去设置里手动删设备。
-> （2.2.1 只是把下面的功能与配置说明写全，代码没变。）
+> （2.2.1 补文档；2.2.2 加了 `restart.cmd` 并修掉 `autostart.vbs` 的语法错。）
 
 ## 用它做什么
 
@@ -108,6 +108,17 @@ python -m wbb status
 
 看到 `BLE=已连 设备=WorkBuddy-xxxxxx` 就成了。
 
+### 更新之后怎么生效：双击 `restart.cmd`
+
+桥的代码是**进程启动时加载**的，所以更新过程序之后**必须换进程才生效**。
+解压出来的目录里有个 **`restart.cmd`**，双击它即可 —— 它会先把在跑的那个请走，
+再用同样的参数拉起一个新的。
+
+> ⚠️ **别用双击 `autostart.vbs` 来做这件事。** 那个是给**开机自启**用的，
+> 它只会再起一个 —— 端口被旧的占着，新的起不来，看起来像"双击了没反应"。
+
+命令行等价写法：`python -m wbb restart`
+
 ## 需要什么
 
 | 项 | 要求 |
@@ -122,7 +133,7 @@ python -m wbb status
 ## 校验值
 
 ```
-3ff24d31663cc4efb06311cb2e94c8bed5bf55aa3a3647f59ce9d7d00111f8c6  WorkBuddy-Bridge-2.2.zip
+b50714c6f0705ffa7b23c6596552bd1f0cfbc2b815d1b5e2ec4020244dd5a779  WorkBuddy-Bridge-2.2.zip
 59a900d642b99cb5b31493885e36e86dc09ed196186fb47efaae92153674b079  workbuddy-passport-firmware-0.2.6-workbuddy-20260915.zip
 ```
 
