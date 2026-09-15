@@ -15,8 +15,12 @@ WorkBuddy ──转录文件──▶ 桥接程序 ──蓝牙──▶ AI Pass
 
 | 包 | 装在哪 | 版本 |
 | --- | --- | --- |
-| `WorkBuddy-Bridge-2.1.zip` | 你的电脑 | 2.1.0 |
+| `WorkBuddy-Bridge-2.2.zip` | 你的电脑 | 2.2.0 |
 | `workbuddy-passport-firmware-0.2.6-workbuddy-20260915.zip` | AI Passport 硬件 | 0.2.6 |
+
+> **重刷过固件的，先把电脑端升到 2.2.0**：整片刷写会覆盖设备 NVS，
+> 设备侧的配对密钥随之丢失，而 Windows 仍记着旧密钥，会出现「连上就断、语音用不了」。
+> 2.2.0 会自己识别并清除，不用再去设置里手动删设备。
 
 ## 安装
 
@@ -37,7 +41,7 @@ python tools/flash.py --full      # 首次安装
 
 ### 2. 桥 → 电脑
 
-解压 `WorkBuddy-Bridge-2.1.zip`，双击 `install.cmd`，跟着提示走（**不需要管理员权限**）。
+解压 `WorkBuddy-Bridge-2.2.zip`，双击 `install.cmd`，跟着提示走（**不需要管理员权限**）。
 装完**完全退出 WorkBuddy 再打开**一次（配置在启动时缓存）。
 
 ### 3. 验证
@@ -60,7 +64,7 @@ python -m wbb status
 ## 校验值
 
 ```
-71b88e943fdbbb7a296b0e9f46eaa5952fb440fa331c857c0564df2003f82b33  WorkBuddy-Bridge-2.1.zip
+9f8feaf119a7e63cebf6c0b97267bed6b09623841f165042f4b87d4414f39788  WorkBuddy-Bridge-2.2.zip
 59a900d642b99cb5b31493885e36e86dc09ed196186fb47efaae92153674b079  workbuddy-passport-firmware-0.2.6-workbuddy-20260915.zip
 ```
 
