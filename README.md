@@ -15,8 +15,8 @@ WorkBuddy ──转录文件──▶ 桥接程序 ──蓝牙──▶ AI Pass
 
 | 包 | 装在哪 | 版本 |
 | --- | --- | --- |
-| `WorkBuddy-Bridge-2.3.zip` | 你的电脑 | 2.3.1 |
-| `workbuddy-passport-firmware-0.2.8-workbuddy-20260920.zip` | AI Passport 硬件 | 0.2.8 |
+| `WorkBuddy-Bridge-2.3.zip` | 你的电脑 | 2.3.2 |
+| `workbuddy-passport-firmware-0.2.11-workbuddy-20260920.zip` | AI Passport 硬件 | 0.2.11 |
 
 > **装完就能用**：双击 `install.cmd` 最后会**直接把桥拉起来**（2.3.1 起），
 > 不用再手动点 `start.cmd`；以后每次登录也会自动启动。
@@ -138,7 +138,7 @@ python -m wbb status
 
 ```
 5cd02767ece4c2f7b7b1a90fde0bfa9c64e44e3158240eddb1a9a89b09fc163f  WorkBuddy-Bridge-2.3.zip
-11a07ab05896311ddf59f5f54bb43c0bb7f004d33bd766994bcd9b45c434eaf0  workbuddy-passport-firmware-0.2.8-workbuddy-20260920.zip
+87a2a242b6e3ccb173822dfd37d940606707c206006939a71e0845a94e881942  workbuddy-passport-firmware-0.2.11-workbuddy-20260920.zip
 ```
 
 固件包内另有 `SHA256SUMS.txt` 与 `firmware/manifest.json`（含每个镜像的哈希与**构建指纹**）。
