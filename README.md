@@ -15,13 +15,16 @@ WorkBuddy ──转录文件──▶ 桥接程序 ──蓝牙──▶ AI Pass
 
 | 包 | 装在哪 | 版本 |
 | --- | --- | --- |
-| `WorkBuddy-Bridge-2.2.zip` | 你的电脑 | 2.2.2 |
-| `workbuddy-passport-firmware-0.2.6-workbuddy-20260915.zip` | AI Passport 硬件 | 0.2.6 |
+| `WorkBuddy-Bridge-2.3.zip` | 你的电脑 | 2.3.0 |
+| `workbuddy-passport-firmware-0.2.8-workbuddy-20260920.zip` | AI Passport 硬件 | 0.2.8 |
 
-> **重刷过固件的，先把电脑端升到 2.2.x**：整片刷写会覆盖设备 NVS，
-> 设备侧的配对密钥随之丢失，而 Windows 仍记着旧密钥，会出现「连上就断、语音用不了」。
-> 2.2.0 起会自己识别并清除，不用再去设置里手动删设备。
-> （2.2.1 补文档；2.2.2 加了 `restart.cmd` 并修掉 `autostart.vbs` 的语法错。）
+> **语音出问题先跑 `python -m wbb doctor`**（2.3.0 新增）：
+> 一条命令告诉你「能不能用、哪儿坏了、下一步干什么」。
+>
+> 这版固件（0.2.8）修了一个真 bug：设备的麦克风一旦出过一次异常，
+> I2S 控制器会被一直占着，**从此再也收不到声音、只有重启能恢复**；
+> 现在它会自己回收、自己恢复。配套地，桥修好了「失败会话的『结束』被吞、
+> 输入法一直卡在听写」（表现为再按一下停不掉）。
 
 ## 用它做什么
 
@@ -63,7 +66,7 @@ python tools/flash.py --full      # 首次安装
 
 ### 2. 桥 → 电脑
 
-解压 `WorkBuddy-Bridge-2.2.zip`，双击 `install.cmd`，跟着提示走（**不需要管理员权限**）。
+解压 `WorkBuddy-Bridge-2.3.zip`，双击 `install.cmd`，跟着提示走（**不需要管理员权限**）。
 装完**完全退出 WorkBuddy 再打开**一次（配置在启动时缓存）。
 
 ### 3. 语音 → 配好微信输入法（**必须做，不做语音用不了**）
@@ -133,8 +136,8 @@ python -m wbb status
 ## 校验值
 
 ```
-b50714c6f0705ffa7b23c6596552bd1f0cfbc2b815d1b5e2ec4020244dd5a779  WorkBuddy-Bridge-2.2.zip
-59a900d642b99cb5b31493885e36e86dc09ed196186fb47efaae92153674b079  workbuddy-passport-firmware-0.2.6-workbuddy-20260915.zip
+ca7654c956e1c5c5ca14cfe5865c72323eaab74869830525614052e785364a5a  WorkBuddy-Bridge-2.3.zip
+11a07ab05896311ddf59f5f54bb43c0bb7f004d33bd766994bcd9b45c434eaf0  workbuddy-passport-firmware-0.2.8-workbuddy-20260920.zip
 ```
 
 固件包内另有 `SHA256SUMS.txt` 与 `firmware/manifest.json`（含每个镜像的哈希与**构建指纹**）。
