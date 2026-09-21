@@ -15,7 +15,7 @@ WorkBuddy ──转录文件──▶ 桥接程序 ──蓝牙──▶ AI Pass
 
 | 包 | 装在哪 | 版本 |
 | --- | --- | --- |
-| `WorkBuddy-Bridge-2.3.zip` | 你的电脑 | 2.3.4 |
+| `WorkBuddy-Bridge-2.3.zip` | 你的电脑 | 2.3.5 |
 | `workbuddy-passport-firmware-0.2.11-workbuddy-20260920.zip` | AI Passport 硬件 | 0.2.11 |
 
 > **装完就能用**：双击 `install.cmd` 最后会**直接把桥拉起来**（2.3.1 起），
